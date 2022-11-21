@@ -10,20 +10,16 @@ import java.util.List;
 import common.JDBCUtil;
 
 public class BoardDAO {
-	// JDBC 愿��젴 蹂��닔
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	// SQL 紐낅졊�뼱�뱾  select ifnull(max(number), 0) + 1
-	//private final String BOARD_INSERT = "insert into board(number, title, writer, content) values(2,?,?,?)";
 	private final String BOARD_INSERT = "insert into board( title, writer, content) values(?,?,?)";
 	private final String BOARD_UPDATE = "update board set title=?, content=? where number=?";
 	private final String BOARD_DELETE = "delete from board where number=? ;";
 	private final String BOARD_GET = "select * from board where number=?";
 	private final String BOARD_LIST = "select * from board order by number desc";
 
-	// CRUD 湲곕뒫�쓽 硫붿냼�뱶 援ы쁽
-	// 湲� �벑濡�
+	
 	public void insertBoard(BoardDTO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
@@ -137,7 +133,7 @@ public class BoardDAO {
 	      } catch(Exception e) {
 	         e.printStackTrace();
 	      }
-	      return list;//ㄱㅔ시글 리스트 반환
+	      return list;   //게시글 리스트 반환
 	   }
 	
 
